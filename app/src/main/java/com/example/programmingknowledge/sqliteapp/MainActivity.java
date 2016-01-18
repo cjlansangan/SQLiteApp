@@ -19,8 +19,8 @@ import java.util.Currency;
 
 public class MainActivity extends AppCompatActivity {
     DatabaseHelper myDb;
-    EditText editName, editSurname, editMarks;
-    Button addData, viewData;
+    EditText editName, editSurname, editMarks, editID;
+    Button addData, viewData, updateData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +33,35 @@ public class MainActivity extends AppCompatActivity {
         editName = (EditText)findViewById(R.id.editText_name);
         editSurname = (EditText)findViewById(R.id.editText_surname);
         editMarks = (EditText)findViewById(R.id.editText_marks);
+        editID = (EditText)findViewById(R.id.editText_id);
         addData = (Button)findViewById(R.id.button_add);
         viewData = (Button)findViewById(R.id.button_view);
+        updateData = (Button)findViewById(R.id.button_update);
         AddData();
         viewAll();
+        UpdateData();
 
             }
+
+    public void UpdateData(){
+        updateData.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        boolean isUpdated = myDb.updateData(editID.getText().toString(),
+                                editName.getText().toString(),
+                                editSurname.getText().toString(),
+                                editMarks.getText().toString());
+                        if (isUpdated == true) {
+                            Toast.makeText(MainActivity.this, "Data is Updated", Toast.LENGTH_LONG).show();
+
+                        } else {
+                            Toast.makeText(MainActivity.this, "Data is not Updated", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+        );
+    }
 
     public void AddData(){
         addData.setOnClickListener(
