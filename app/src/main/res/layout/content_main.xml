@@ -94,8 +94,10 @@
         android:text="UPDATE DATA"
         android:id="@+id/button_update"
         android:layout_below="@+id/button_add"
-        android:layout_alignLeft="@+id/editText_id"
-        android:layout_alignStart="@+id/editText_id" />
+        android:layout_alignLeft="@+id/button_add"
+        android:layout_alignStart="@+id/button_add"
+        android:layout_toLeftOf="@+id/button_view"
+        android:layout_toStartOf="@+id/button_view" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -112,7 +114,18 @@
         android:layout_height="wrap_content"
         android:id="@+id/editText_id"
         android:layout_alignTop="@+id/textView_id"
-        android:layout_toRightOf="@+id/textView_id"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/editText_marks"
+        android:layout_alignStart="@+id/editText_marks" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DELETE DATA"
+        android:id="@+id/button_delete"
+        android:layout_alignBottom="@+id/button_update"
+        android:layout_toRightOf="@+id/button_update"
+        android:layout_alignRight="@+id/button_view"
+        android:layout_alignEnd="@+id/button_view" />
 </RelativeLayout>

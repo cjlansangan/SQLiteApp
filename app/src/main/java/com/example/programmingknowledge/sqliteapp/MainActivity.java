@@ -20,7 +20,7 @@ import java.util.Currency;
 public class MainActivity extends AppCompatActivity {
     DatabaseHelper myDb;
     EditText editName, editSurname, editMarks, editID;
-    Button addData, viewData, updateData;
+    Button addData, viewData, updateData, deleteData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +37,31 @@ public class MainActivity extends AppCompatActivity {
         addData = (Button)findViewById(R.id.button_add);
         viewData = (Button)findViewById(R.id.button_view);
         updateData = (Button)findViewById(R.id.button_update);
+        deleteData = (Button)findViewById(R.id.button_delete);
         AddData();
         viewAll();
         UpdateData();
+        DeleteData();
 
             }
+
+    public void DeleteData(){
+        deleteData.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Integer isDeleted = myDb.deleteData(editID.getText().toString());
+                        if (isDeleted > 0 ) {
+                            Toast.makeText(MainActivity.this, "Data is Deleted", Toast.LENGTH_LONG).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(MainActivity.this, "Data is not Deleted", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+        );
+    }
 
     public void UpdateData(){
         updateData.setOnClickListener(
